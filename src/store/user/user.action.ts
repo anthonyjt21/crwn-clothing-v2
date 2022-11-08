@@ -1,11 +1,10 @@
 import { USER_ACTION_TYPES } from './user.types';
 import {
   createAction,
+  withMatcher,
   Action,
   ActionWithPayload,
-  withMatcher,
 } from '../../utils/reducer/reducer.utils';
-
 import {
   UserData,
   AdditionalInformation,
@@ -14,26 +13,34 @@ import { User } from 'firebase/auth';
 
 export type CheckUserSession = Action<USER_ACTION_TYPES.CHECK_USER_SESSION>;
 
+export type SetCurrentUser = ActionWithPayload<
+  USER_ACTION_TYPES.SET_CURRENT_USER,
+  UserData
+>;
+
 export type GoogleSignInStart = Action<USER_ACTION_TYPES.GOOGLE_SIGN_IN_START>;
+
+export type SignUpStart = ActionWithPayload<
+  USER_ACTION_TYPES.SIGN_UP_START,
+  { email: string; password: string; displayName: string }
+>;
 
 export type EmailSignInStart = ActionWithPayload<
   USER_ACTION_TYPES.EMAIL_SIGN_IN_START,
   { email: string; password: string }
 >;
 
+/*export type SignUpStart = ActionWithPayload<
+  USER_ACTION_TYPES.SIGN_UP_START,
+  { email: string }
+>;*/
 export type SignInSuccess = ActionWithPayload<
   USER_ACTION_TYPES.SIGN_IN_SUCCESS,
   UserData
 >;
-
 export type SignInFailed = ActionWithPayload<
   USER_ACTION_TYPES.SIGN_IN_FAILED,
   Error
->;
-
-export type SignUpStart = ActionWithPayload<
-  USER_ACTION_TYPES.SIGN_UP_START,
-  { email: string }
 >;
 
 export type SignUpSuccess = ActionWithPayload<
@@ -54,9 +61,13 @@ export type SignOutFailed = ActionWithPayload<
   USER_ACTION_TYPES.SIGN_OUT_FAILED,
   Error
 >;
-
 export const checkUserSession = withMatcher(
   (): CheckUserSession => createAction(USER_ACTION_TYPES.CHECK_USER_SESSION)
+);
+
+export const setCurrentUser = withMatcher(
+  (user: UserData): SetCurrentUser =>
+    createAction(USER_ACTION_TYPES.SET_CURRENT_USER, user)
 );
 
 export const googleSignInStart = withMatcher(
