@@ -13,7 +13,6 @@ import {
   FormContainer,
   PaymentButton,
 } from './payment-form.styles';
-import { isReturnStatement } from 'typescript';
 
 const ifValidCardElement = (
   card: StripeCardElement | null

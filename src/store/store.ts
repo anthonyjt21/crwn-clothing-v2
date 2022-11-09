@@ -9,6 +9,7 @@ import { rootSaga } from './root-saga';
 import { rootReducer } from './root-reducer';
 
 export type RootState = ReturnType<typeof rootReducer>;
+
 declare global {
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
@@ -18,6 +19,7 @@ declare global {
 type ExtendedPersistConfig = PersistConfig<RootState> & {
   whitelist: (keyof RootState)[];
 };
+
 const persistConfig: ExtendedPersistConfig = {
   key: 'root',
   storage,

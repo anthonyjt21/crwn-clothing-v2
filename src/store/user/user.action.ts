@@ -1,5 +1,7 @@
-import { USER_ACTION_TYPES } from './user.types';
 import { User } from 'firebase/auth';
+
+import { USER_ACTION_TYPES } from './user.types';
+
 import {
   createAction,
   withMatcher,

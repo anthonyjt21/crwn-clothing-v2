@@ -90,7 +90,7 @@ export type AdditionalInformation = {
 };
 
 export type UserData = {
-  createAt: Date;
+  createdAt: Date;
   displayName: string;
   email: string;
 };

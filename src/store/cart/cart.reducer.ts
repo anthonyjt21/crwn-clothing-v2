@@ -1,4 +1,5 @@
 import { AnyAction } from 'redux';
+
 import { setCartItems, setIsCartOpen } from './cart.action';
 
 import { CartItem } from './cart.types';
@@ -23,11 +24,13 @@ export const cartReducer = (
       isCartOpen: action.payload,
     };
   }
+
   if (setCartItems.match(action)) {
     return {
       ...state,
       cartItems: action.payload,
     };
   }
+
   return state;
 };

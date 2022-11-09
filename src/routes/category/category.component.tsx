@@ -15,6 +15,7 @@ import { CategoryContainer, Title } from './category.styles';
 type CategoryRouteParams = {
   category: string;
 };
+
 const Category = () => {
   const { category } = useParams<
     keyof CategoryRouteParams
