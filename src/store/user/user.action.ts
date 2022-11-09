@@ -32,14 +32,11 @@ export type EmailSignInStart = ActionWithPayload<
   { email: string; password: string }
 >;
 
-/*export type SignUpStart = ActionWithPayload<
-  USER_ACTION_TYPES.SIGN_UP_START,
-  { email: string }
->;*/
 export type SignInSuccess = ActionWithPayload<
   USER_ACTION_TYPES.SIGN_IN_SUCCESS,
   UserData
 >;
+
 export type SignInFailed = ActionWithPayload<
   USER_ACTION_TYPES.SIGN_IN_FAILED,
   Error
@@ -63,6 +60,7 @@ export type SignOutFailed = ActionWithPayload<
   USER_ACTION_TYPES.SIGN_OUT_FAILED,
   Error
 >;
+
 export const checkUserSession = withMatcher(
   (): CheckUserSession => createAction(USER_ACTION_TYPES.CHECK_USER_SESSION)
 );
